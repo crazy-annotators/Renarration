@@ -3,7 +3,7 @@
  "@type": "rn:Renarration",
  "renarratedAt": "2015-11-20T13:08:00.650Z",
  "source": {
-  "@id": "replacement_of_div_with_paragraph_original.html",
+  "@id": "replacement_of_div_with_image_original.html",
   "@type": ["foaf:Page", "rn:Document"]
  }, 
  "transform": {
@@ -16,18 +16,17 @@
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Replace",
    "narration": {
-     "@id": "4f841294-b790-4fa9-8e9c-d082084d8441",
-	 "@type": "cnt:ContentAsText",
-     "content": "Text2"  
+     "@id": "http://img1.jpg",
+	 "@type": "dctypes:Image"   
    },
    "targetSelection": {
      "@id": "fb60d831-7c18-4e83-b8da-341e46482106",
      "@type": "rn:XPathSelector",
-	 "value": "#xpointer(//html[1]/body[1]/p[1])"
+	 "value": "#xpointer(//html[1]/body[1]/img[1])"
 	}   
  },
  "target": {
-  "@id": "replacement_of_div_with_paragraph_renarrated.html",
+  "@id": "replacement_of_div_with_image_renarrated.html",
   "@type": ["foaf:Page", "rn:Document"]
  }  
 }

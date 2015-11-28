@@ -2,6 +2,10 @@
  "@id": "fbae30fa-2687-499e-9a85-1b12d75367d7",
  "@type": "rn:Renarration",
  "renarratedAt": "2015-11-20T13:08:00.650Z",
+ "source": {
+  "@id": "removal_of_paragraph_with_multiple_images_original.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ },  
  "transform": {
    "@type": "rn:RenarrationTransformation",
    "sourceSelection": {
@@ -41,5 +45,9 @@
      }		 
 	]
   }
- }
+ },
+ "target": {
+  "@id": "removal_of_paragraph_with_multiple_images_renarrated.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ }  
 }
