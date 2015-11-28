@@ -8,7 +8,7 @@
      "@id": "6322109a-e221-4c61-9e51-5d31287a4dc9",
      "@type": "rn:XPathSelector",
 	 "value": "#xpointer(//html[1]/body[1]/div[1])"   
-	}
+	},
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Replace",
    "narration": {

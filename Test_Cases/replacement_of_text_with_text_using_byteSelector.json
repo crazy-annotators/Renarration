@@ -9,7 +9,7 @@
      "@type": "rn:ByteSelector",
      "offset": "0",
 	 "byteNumber": "5"
-    }
+    },
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Replace",
    "narration": {

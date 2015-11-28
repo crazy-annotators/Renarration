@@ -8,9 +8,9 @@
      "@id": "fb60d831-7c18-4e83-b8da-341e46482106",
      "@type": "rn:PrefixSuffixSelector",
      "prefix": "",
-	 "suffix": ""
+	 "suffix": "",
 	 "text": "Text1"
-    }
+    },
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Replace",
    "narration": {

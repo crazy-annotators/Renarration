@@ -1,0 +1,45 @@
+{
+ "@id": "fbae30fa-2687-499e-9a85-1b12d75367d7",
+ "@type": "rn:Renarration",
+ "renarratedAt": "2015-11-20T13:08:00.650Z",
+ "transform": {
+   "@type": "rn:RenarrationTransformation",
+   "sourceSelection": {
+     "@id": "156736a-f13f-4596-a 687-2c0868a6c28e",
+     "@type": "rn:XPathSelector",
+     "value": "#xpointer(//html[1]/body[1]/p[1])"  
+	},
+   "createdAt": "2015-11-20T13:07:27.967Z",
+   "action": "rn:Replace",
+   "narration": {
+    "@id": "529801b-f13f-4596-a 687-2c0868a6c28e",
+    "@type": "rn:List",
+    "nodes": [
+     {
+      "@id": "http://img1.jpg",
+      "@type": "dctypes:Image"
+     },
+     {
+      "@id": "http://img2.jpg",
+      "@type": "dctypes:Image"
+     }		 
+	]   
+   },
+   "targetSelection": {
+    "@id": "5294370b-f13f-4596-a 687-2c0868a6c28e",
+    "@type": "rn:List",
+    "nodes": [
+     {
+      "@id": "5294370a-f13f-4596-a 687-2c0868a6c28e",
+      "@type": "rn:XPathSelector",
+      "value": "#xpointer(//html[1]/body[1]/img[1])"
+     },
+     {
+      "@id": "5278370a-f13f-4596-a 687-2c0868a6c28e",
+      "@type": "rn:XPathSelector",
+      "value": "#xpointer(//html[1]/body[1]/img[2])"
+     }		 
+	]
+  }
+ }
+}

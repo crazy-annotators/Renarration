@@ -11,7 +11,7 @@
       {
        "@id": "5294370a-f13f-4596-a 687-2c0868a6c28e",
        "@type": "rn:XPathSelector",
-       "value": "#xpointer(//html[1]/body[1]/div[1]/div[1]/div[1]/p[1])"
+       "value": "#xpointer(//html[1]/body[1]/p[1])"
       },
       {
        "@id": "5294370a-f13f-4596-a 687-2c0868a6c28e",
@@ -20,8 +20,7 @@
 	   "suffix": "",
 	   "text": "23"
       }	  
-	 ],
-	 "value": "#xpointer(//html[1]/body[1]/p[2])"    
+	 ]   
 	},
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Remove"   

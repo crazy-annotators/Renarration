@@ -21,7 +21,7 @@
 	  "suffix": "",
 	  "text": "1"
 	 }	 	
-	]
+	],
    "createdAt": "2015-11-20T13:07:27.967Z",
    "action": "rn:Replace",
    "narration": {
@@ -29,5 +29,6 @@
 	 "@type": "cnt:ContentAsText",
      "content": "2"   
    }
+  }
  }
 }
