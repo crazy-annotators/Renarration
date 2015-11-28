@@ -1,0 +1,33 @@
+{
+ "@id": "fbae30fa-2687-499e-9a85-1b12d75367d7",
+ "@type": "rn:Renarration",
+ "renarratedAt": "2015-11-20T13:08:00.650Z",
+ "transform": {
+   "@id": "095555b3-40f9-4120-bb67-2db9f4dc40b6",
+   "@type": "rn:RenarrationTransformation",
+   "sourceSelection": {
+    "@id": "67d115be-ae56-470f-b a59-dc4b4c0290c9",
+    "@type": "rn:List", 
+	"nodes": [
+	 {
+      "@id": "fb60d831-7c18-4e83-b8da-341e46482106",
+      "@type": "rn:XPathSelector",
+	  "value": "#xpointer(//html[1]/body[1]/p[1])"
+	 },
+	 {
+      "@id": "5d40b6da-888b-4c91-8079-1f016b887 2f9",
+      "@type": "rn:PrefixSuffixSelector",
+	  "prefix": "ext",
+	  "suffix": "",
+	  "text": "1"
+	 }	 	
+	]
+   "createdAt": "2015-11-20T13:07:27.967Z",
+   "action": "rn:Replace",
+   "narration": {
+     "@id": "554f2f73-0d93-4426-851f-56613d1194d1",
+	 "@type": "cnt:ContentAsText",
+     "content": "2"   
+   }
+ }
+}
