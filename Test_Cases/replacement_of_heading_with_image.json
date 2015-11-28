@@ -1,0 +1,32 @@
+{
+ "@id": "fbae30fa-2687-499e-9a85-1b12d75367d7",
+ "@type": "rn:Renarration",
+ "renarratedAt": "2015-11-20T13:08:00.650Z",
+ "source": {
+  "@id": "replacement_of_heading_with_image_original.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ },   
+ "transform": {
+   "@type": "rn:RenarrationTransformation",
+   "sourceSelection": {
+     "@id": "6322109a-e221-4c61-9e51-5d31287a4dc9",
+     "@type": "rn:XPathSelector",
+	 "value": "#xpointer(//html[1]/body[1]/h1[1])"   
+	},
+   "createdAt": "2015-11-20T13:07:27.967Z",
+   "action": "rn:Replace",
+   "narration": {
+     "@id": "http://img1.jpg",
+	 "@type": "dctypes:Image" 
+   },
+   "targetSelection": {
+     "@id": "fb60d831-7c18-4e83-b8da-341e46482106",
+     "@type": "rn:XPathSelector",
+	 "value": "#xpointer(//html[1]/body[1]/img[1])"
+	}    
+ },
+ "target": {
+  "@id": "replacement_of_heading_with_image_renarrated.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ }  
+}
