@@ -1,0 +1,32 @@
+{
+ "@id": "88b64849-fbdb-4157-8393-08bb509bcd80",
+ "@type": "oa:Annotation",
+ "annotatedAt": "2015-11-20T11:46:48.747Z",
+ "serializedAt": "2015-11-20T11:46:48.747Z",
+ "annotatedBy": {
+   "@id": "749bf220-4e8b-481d-8b7a-e5e735e684f1",
+   "@type": "foaf:Person",
+   "name": "Annotator"
+ },
+ "body": {
+  "@id": "d1f273c6-3f93-4e37-b93c-8b58d 01017ec",
+  "@type": "oa:EmbeddedContent",
+  "value": "Annotation Text",
+  "format" : "text/plain"
+ },
+ "target": {
+  "@id": "c25cf552-2bcf-40c8-8424-f46b77287595",
+  "@type": "oa:SpecificResource",
+  "selector": {
+     "@id": "7b0fa8bc-d7c4-4685-81e5-6a90a15d7241",
+     "@type": "oa:TextQuoteSelector",
+     "exact": "Text2",
+     "prefix": "Text1",
+     "suffix": "Text3"
+    },
+  "source": {
+   "@id": "transform_after_removal_of_content_original.html",
+   "@type": "foaf:page"
+  }
+ }
+}

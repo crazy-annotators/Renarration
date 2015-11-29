@@ -1,0 +1,51 @@
+{
+ "@id": "fbae30fa-2687-499e-9a85-1b12d75367d7",
+ "@type": "rn:Renarration",
+ "renarratedAt": "2015-11-20T13:08:00.650Z",
+ "renarrator": {
+  "@id": "e8f551f8-33ea-429d-8932-9f16bd8ef3b7",
+  "@type": "foaf:Person",
+  "name": "A Person"
+ }, 
+ "source": {
+  "@id": "insert_after_element_original.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ },   
+ "transform":     {
+  "@id": "20ca990d-b233-4047-b40a-258a8278fada",
+  "@type": "rn:RenarrationTransformation",
+  "sourceSelection": {
+   "@id": "6322109a-e221-4c61-9e51-5d31287a4dc9",
+   "@type": "rn:BetweenSelector",
+   "between": {
+     "@id": "243b6a65-d16f-4c30-aff4-7800be645415",
+	 "@type": "rn:List",
+	 "nodes": [
+	  {
+	    "@id": "7544109a-e221-4c61-9e51-5d31287a6bh8",
+		"@type": "rn:XPathSelector",
+		"value": "#xpointer(//html[1]/body[1]/p[1])"
+	  },
+	  {
+	  }	  
+	 ]
+    }   
+   },	 
+  "createdAt": "2015-11-20T13:07:27.967Z",
+  "action": "rn:Insert",
+  "narration": {
+   "@id": "243b6a94-d16f-4c30-aff4-7800be645415",
+   "@type": "cnt:ContentAsText",
+   "content": "Text2"  
+   },	 
+  "targetSelection": {
+   "@id": "fb60d831-7c18-4e83-b8da-341e46482106",
+   "@type": "rn:XPathSelector",
+   "value": "#xpointer(//html[1]/body[1]/p[2])"
+   }	 
+  },
+ "target": {
+  "@id": "insert_after_element_renarrated.html",
+  "@type": ["foaf:Page", "rn:Document"]
+ }  
+}
