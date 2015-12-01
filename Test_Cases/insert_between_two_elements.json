@@ -35,7 +35,7 @@
     }   
    },	 
   "createdAt": "2015-11-20T13:07:27.967Z",
-  "action": "rn:Replace",
+  "action": "rn:Insert",
   "narration": {
    "@id": "243b6a94-d16f-4c30-aff4-7800be645415",
    "@type": "cnt:ContentAsText",

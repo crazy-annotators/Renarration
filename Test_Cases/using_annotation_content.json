@@ -8,7 +8,7 @@
   "name": "A Person"
  }, 
  "source": {
-  "@id": "transform_after_removal_of_content_original.html",
+  "@id": "using_annotation_content_original.html",
   "@type": ["foaf:Page", "rn:Document"]
  },   
  "transform":     {
@@ -24,7 +24,7 @@
   "narration": {
    "@id": "243b6a94-d16f-4c30-aff4-7800be645415",
    "@type": "cnt:ContentAsText",
-   "content": "Text4",
+   "content": "Annotation Text",
    "accessedFrom": {
     "@id": "88b64849-fbdb-4157-8393-08bb509bcd80",
     "@type": "oa:Annotation"
@@ -37,7 +37,7 @@
    }	 
   },
  "target": {
-  "@id": "transform_after_removal_of_content_renarrated.html",
+  "@id": "using_annotation_content_renarrated.html",
   "@type": ["foaf:Page", "rn:Document"]
  }  
 }
