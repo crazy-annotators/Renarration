@@ -1,0 +1,871 @@
+{
+ "@context": {
+  "rn": "https://github.com/EmrahGuder/Renarration/rn#",
+  "oa": "http://www.w3.org/ns/oa#",
+  "foaf": "http://xmlns.com/foaf/0.1/",
+  "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "cnt": "http://www.w3.org/2011/content#",
+  "skos": "http://www.w3.org/2004/02/skos/core#",
+  "dc": "http://purl.org/dc/elements/1.1/",
+  "dctypes": "http://purl.org/dc/dcmitype/",
+  "owl": "http://www.w3.org/2002/07/owl#",
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+	
+  "sourceSelection" : {"@type":"@id", "@id" : "rn:sourceSelection"},
+  "audience"	: {"@type":"@id", "@id" : "rn:hasTargetAudience"},
+  "source" : {"@type":"@id", "@id" : "rn:onSourceDocument"},
+  "target" : {"@type":"@id", "@id" : "rn:onTargetDocument"}, 
+  "transform" : {"@type":"@id", "@id" : "rn:hasRenarrationTransformation"},
+  "nodes" : {"@type":"@id", "@id" : "rn:nodes", "@container" : "@list"},
+  "action" : {"@type":"@id", "@id" : "rn:actionOnDocument"},
+  "narration" : {"@type":"@id", "@id" : "rn:hasNarration"},
+  "accessedFrom" : {"@type":"@id", "@id" : "rn:accessedFrom"},
+  "renarrator" : {"@type":"@id", "@id" : "rn:renarratedBy"},
+  "motivation" : {"@type":"@id", "@id" : "rn:hasMotivation"},
+  
+  
+  "content" : "cnt:content",
+  "renarratedAt" : "rn:renarratedAt",
+  "value" : "rdf:value",
+  "createdAt" : "rn:createdAt"
+
+ },
+ "@graph": [ 
+  {
+   "@id": "rn:Renarration",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The class for Renarrations. The rn:Renarration class must be associated with a renarrator(rn:Renarrator) and a timestamp for defining time at renarration is created."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Renarration"
+   }
+  },
+  {
+   "@id": "rn:Renarrator",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The class for Renarrators. Each renarrator must be equivalent with foaf:Person."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Renarrator"
+   },
+   "owl:equivalentClass": {
+    "@id": "foaf:Person"
+   }
+  },  
+  {
+   "@id": "rn:Document",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Any type of resource on the Web. If a more specific type is known, than it should be associated with source or renarrated documents."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Document"
+   }
+  },   
+  {
+   "@id": "rn:renarratedBy",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a Renarration and a Renarrator. There must be at least one rn:renarratedBy relationship associated with a Renarration. The object of the relationship must be an instance of rn:Renarrator class, which is the person who is responsible for the creation of the Renarration."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "renarratedBy"
+   },
+   "rdfs:range": {
+    "@id": "rn:Renarrator"
+   }   
+  },  
+  {
+   "@id": "rn:onSourceDocument",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a Renarration and a source document. There must be at least one rn:onSourceDocument relationship associated with a Renarration. The object of the relationship must be a document for which the renarration is being done."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "onSourceDocument"
+   }  
+  },  
+  {
+   "@id": "rn:toTargetDocument",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": " The relationship between a Renarration and a target document (renarrated document). There must be at least one rn:toTargetDocument relationship associated with a Renarration. The object of the relationship must be an instance of rn:Document class."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "toTargetDocument"
+   }  
+  },  
+  {
+   "@id": "rn:renarratedAt",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The time at which the Renarration is created. There must be exactly one rn:renarratedAt property associated with a Renarration."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "renarratedAt"
+   },
+   "rdfs:range": {
+    "@id": "xsd:dateTimeStamp"
+   }
+  },
+  {
+   "@id": "rn:Transformation",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Superclass for rn:RenarrationTransformation and rn:List."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Transformation"
+   }
+  },   
+  {
+   "@id": "rn:RenarrationTransformation",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The class for Renarration Transformations defining specific actions on parts of source documents. The rn:RenarrationTransformation class must be associated with a Renarration, a source document and a narration created for the selected part of the source document."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "RenarrationTransformation"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:Transformation"
+   }
+  },  
+  {
+   "@id": "rn:hasRenarrationTransformation",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": " The relationship between a Renarration and a target document (renarrated document). There must be at least one rn:toTargetDocument relationship associated with a Renarration. The object of the relationship must be an instance of rn:Document class."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "hasRenarrationTransformation"
+   },
+   "rdfs:range": {
+	"@id": "rn:Transformation"
+   }
+  },  
+  {
+   "@id": "rn:hasNarration",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a Renarration Transformation and a narration defining content being created(as a renarration) for source content."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "hasNarration"
+   }
+  },
+  {
+   "@id": "rn:accessedFrom",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relation between a narration and external resource from which the content may be referenced."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "accessedFrom"
+   }
+  },  
+  {
+   "@id": "rn:sourceDocumentSelection",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a Renarration Transformation and part of a source document. The object of the relationship must be an instance of a selector class."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "sourceDocumentSelection"
+   }
+  },
+  {
+   "@id": "rn:targetDocumentSelection",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a Renarration Transformation and part of the renarrated document. The object of the relationship must be an instance of a selector class."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "targetDocumentSelection"
+   }
+  },
+  {
+   "@id": "rn:createdAt",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The time at which the Renarration Transformation is created. There must be exactly one rn:createdAt property associated with a Renarration Transformation."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "createdAt"
+   },
+   "rdfs:range": {
+    "@id": "xsd:dateTimeStamp"
+   }
+  },
+  {
+   "@id": "rn:Action",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The rn:Action class must be associated with a Renarration Transformation. Defines type of action on targeted source element."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Action"
+   },
+   "rdfs:subClassOf": {
+    "@id": "skos:Concept"
+   }   
+  },  
+  {
+   "@id": "rn:actionScheme",
+   "@type": [
+    "skos:ConceptScheme",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Instance of skos:ConceptScheme. The concept scheme for defining a set of instances of rn:Action."
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "actionScheme"
+   }
+  },  
+  {
+   "@id": "rn:actionOnDocument",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": " The relationship between rn:RenarrationTransformation and rn:Action for defining type of action on targeted source element."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "actionOnDocument"
+   },
+   "rdfs:range": {
+    "@id": "rn:Action"
+   }   
+  },
+  {
+   "@id": "rn:replace",
+   "@type": ["rn:Action", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Instance of rn:Action. The action that represents replacing content in a source document with new content which will reside in a target document."
+   },
+   "skos:inScheme": {
+    "@id": "rn:actionScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "replace"
+   }
+  }, 
+  {
+   "@id": "rn:remove",
+   "@type": ["rn:Action", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Instance of rn:Action. The action that represents replacing content in a source document with nothing in a target document."
+   },
+   "skos:inScheme": {
+    "@id": "rn:actionScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "remove"
+   }
+  },
+  {
+   "@id": "rn:insert",
+   "@type": ["rn:Action", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "Instance of rn:Action. The action that represents insertion of content to a specified location."
+   },
+   "skos:inScheme": {
+    "@id": "rn:actionScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "insert"
+   }
+  },
+  {
+   "@id": "rn:sourceSelection",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between renarration transform and an instance of document selector for selecting part of a source document associated with the renarration."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "sourceSelection"
+   },
+   "rdfs:range": {
+    "@id": "rn:DocumentSelector"
+   }   
+  },  
+  {
+   "@id": "rn:targetSelection",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between renarration transform and an instance of document selector for linking the selected part in renarrated document with source document."
+   },
+   "rdfs:domain": {
+    "@id": "rn:RenarrationTransformation"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "targetSelection"
+   },
+   "rdfs:range": {
+    "@id": "rn:DocumentSelector"
+   }   
+  },   
+  {
+   "@id": "rn:DocumentSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The superclass for all selectors."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "DocumentSelector"
+   }  
+  }, 
+  {
+   "@id": "rn:TextSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:DocumentSelector and superclass of rn:PrefixSuffixSelector and rn:ByteSelector. The class describes a range of text either by the use of start and end positions or by using prefix and suffixes."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "TextSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:DocumentSelector"
+   }   
+  },
+  {
+   "@id": "rn:PrefixSuffixSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:TextSelector. The class describes a range of text by the use of prefix and suffix."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "PrefixSuffixSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:TextSelector"
+   }   
+  },
+  {
+   "@id": "rn:ByteSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:TextSelector. The class describes a range of text by the use of start and end bytes."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "ByteSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:TextSelector"
+   }   
+  },
+  {
+   "@id": "rn:BetweenSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:DocumentSelector. The class describes a selection between two selectors."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "BetweenSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:DocumentSelector"
+   }   
+  },  
+  {
+   "@id": "rn:XPathSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:DocumentSelector. The class describes a targeted segment by using a fragment identifier using xpath."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "XPathSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:DocumentSelector"
+   },
+   "dc:conformsTo" : "http://tools.ietf.org/rfc/rfc3023"   
+  },
+  {
+   "@id": "rn:MediaSelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:DocumentSelector. The class describes a targeted segment of any media on the Web by use of a fragment identifier."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "MediaSelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:DocumentSelector"
+   } 
+  },  
+  {
+   "@id": "rn:EmptySelector",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rn:DocumentSelector. The class describes no selection. Special class designed to be used with rn:BetweenSelector."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "EmptySelector"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rn:DocumentSelector"
+   } 
+  },
+  {
+   "@id": "rn:isBetween",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relation between a rn:BetweenSelector and rn:List. The object of the relationship must be an instance of rn:List class."
+   },
+   "rdfs:domain": {
+    "@id": "rn:BetweenSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "isBetween"
+   },
+   "rdfs:range": {
+    "@id": "rn:List"
+   }   
+  },  
+  {
+   "@id": "rn:prefix",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The snippet of text occurs before the targeted text in a resource."
+   },
+   "rdfs:domain": {
+    "@id": "rn:PrefixSuffixSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "prefix"
+   }
+  },
+  {
+   "@id": "rn:suffix",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The snippet of text occurs after the targeted text in a resource."
+   },
+   "rdfs:domain": {
+    "@id": "rn:PrefixSuffixSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "suffix"
+   }
+  },  
+  {
+   "@id": "rn:selectedText",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The snippet of text which is targeted."
+   },
+   "rdfs:domain": {
+    "@id": "rn:PrefixSuffixSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "selectedText"
+   }
+  },
+  {
+   "@id": "rn:offset",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The starting position of the content to be selected."
+   },
+   "rdfs:domain": {
+    "@id": "rn:PrefixSuffixSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "offset"
+   }
+  },  
+  {
+   "@id": "rn:byteNumber",
+   "@type": "owl:DatatypeProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The number of bytes should be selected after the value of rn:offset"
+   },
+   "rdfs:domain": {
+    "@id": "rn:PrefixSuffixSelector"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "byteNumber"
+   }
+  },    
+  {
+   "@id": "rn:Motivation",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of skos:Concept. The reason behind the creation of a renarration or a renarration transformation. Motivations can be things like translation, simplification, correction, or alternative."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "Motivation"
+   },
+   "rdfs:subClassOf": {
+    "@id": "skos:Concept"
+   } 
+  },
+  {
+   "@id": "rn:hasMotivation",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a renarration and motivation."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "hasMotivation"
+   },
+   "rdfs:range": {
+    "@id": "rn:Motivation"
+   }   
+  },
+  {
+   "@id": "rn:motivationScheme",
+   "@type": [
+    "skos:ConceptScheme",
+    "owl:NamedIndividual"
+   ],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The concept scheme for motivations."
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "motivationScheme"
+   }
+  },  
+  {
+   "@id": "rn:hasTargetAudience",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": " The relationship between a renarration and a group of people renarration is aimed for."
+   },
+   "rdfs:domain": {
+    "@id": "rn:Renarration"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "hasTargetAudience"
+   }  
+  },  
+  {
+   "@id": "rn:translation",
+   "@type": ["rn:Motivation", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The motivation that represents interpretation of source content in another language."
+   },
+   "skos:inScheme": {
+    "@id": "rn:motivationScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "translation"
+   }
+  },
+  {
+   "@id": "rn:simplification",
+   "@type": ["rn:Motivation", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The motivation that represents simplifying content in a source document so that it will be easier to consume."
+   },
+   "skos:inScheme": {
+    "@id": "rn:motivationScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "simplification"
+   }
+  },  
+  {
+   "@id": "rn:correction",
+   "@type": ["rn:Motivation", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The motivation that represents updating content either for verification or adjustment."
+   },
+   "skos:inScheme": {
+    "@id": "rn:motivationScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "correction"
+   }
+  },
+  {
+   "@id": "rn:alternative",
+   "@type": ["rn:Motivation", "owl:NamedIndividual"],
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The motivation that represents providing a new content which alternates content in a source document."
+   },
+   "skos:inScheme": {
+    "@id": "rn:motivationScheme"
+   },
+   "skos:prefLabel": {
+    "@language": "en",
+    "@value": "alternative"
+   }
+  },   
+  {
+   "@id": "rn:List",
+   "@type": "owl:Class",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "subClass of rdf:Bag. Defines a list of narrations, which should be interpreted in defined order, for a source document or part of a source document."
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "List"
+   },
+   "rdfs:subClassOf": {
+    "@id": "rdf:Bag"
+   } 
+  },  
+  {
+   "@id": "rn:nodes",
+   "@type": "owl:ObjectProperty",
+   "rdfs:comment": {
+    "@language": "en",
+    "@value": "The relationship between a resource and an instance of rdf:List class. When the relationship is rn:RenarrationTransformation rn:nodes is used to define a list of Renarration Transformation. When the relationship is rn:hasNarration, it is used to define a list of narrations(rn:hasNarration). Lastly, when the relationship is rn:onSourceDocument, it is used to define nested selections of source documents."
+   },
+   "rdfs:domain": {
+    "@id": "rn:List"
+   },
+   "rdfs:isDefinedBy": {
+    "@id": "rn:"
+   },
+   "rdfs:label": {
+    "@language": "en",
+    "@value": "nodes"
+   },
+   "rdfs:range": {
+    "@id": "rdf:List"
+   }   
+  }   
+ ]  
+}
