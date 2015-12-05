@@ -1,0 +1,500 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY rn "https://github.com/EmrahGuder/Renarration/#" >
+	<!ENTITY oa "http://www.w3.org/ns/oa#" >
+    <!ENTITY dcterms "http://purl.org/dc/terms/" >
+    <!ENTITY foaf "http://xmlns.com/foaf/0.1/" >
+    <!ENTITY dctypes "http://purl.org/dc/dcmitype/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY cnt "http://www.w3.org/2011/content#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+<rdf:RDF xmlns="https://github.com/EmrahGuder/Renarration/"
+     xml:base="https://github.com/EmrahGuder/Renarration/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:cnt="http://www.w3.org/2011/content#"
+     xmlns:dcterms="http://purl.org/dc/terms/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:oa="http://www.w3.org/ns/oa#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:dctypes="http://purl.org/dc/dcmitype/"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+	 
+    <owl:Ontology rdf:about="https://github.com/EmrahGuder/Renarration/#">
+        <dcterms:modified rdf:datatype="&xsd;dateTime">2015-12-05T15:50:23+03:00</dcterms:modified>
+        <owl:versionInfo>20151205_1</owl:versionInfo>
+        <dc:title xml:lang="en">Renarration Data Model</dc:title>
+        <dc:creator xml:lang="en">Emrah Guder</dc:creator>
+        <dc:creator xml:lang="it">Suzan Uskudarli</dc:creator>
+        <dc:contributor xml:lang="en">T. B. Dinesh</dc:contributor>
+        <rdfs:comment xml:lang="en">
+			Renarration Data Model specifies a framework for creating alternative narrations of source documents by 
+			transformation of their elements such as translation of a paragraph or replacing an element with an image. 
+		
+			The specification can be found on GitHub - https://github.com/EmrahGuder/Renarration.			
+		</rdfs:comment>
+        <dc:description xml:lang="en">
+			Renarration Data Model specifies a framework for creating alternative narrations of source documents by 
+			transformation of their elements such as translation of a paragraph or replacing an element with an image. 
+			
+			A Renarration is considered to be an alternative narration described by a given user at a given time consisting 
+			of a set of renarration transformations. The following figure shows renarration of a source document. 
+			The source document is renarrated by a set of transformations on the elements of the document, as a result target document is composed. 
+			The whole process is called a Renarration.
+			
+        </dc:description>
+    </owl:Ontology>	 
+	
+	<!-- Data Properties -->
+	
+	<owl:DatatypeProperty rdf:about="&rn;renarratedAt">
+        <rdfs:label xml:lang="en">renarratedAt</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The time at which the Renarration is created. There must be exactly one rn:renarratedAt property associated with a Renarration.
+		</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTimeStamp"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;Renarration"/>
+    </owl:DatatypeProperty>
+	
+	<owl:DatatypeProperty rdf:about="&rn;createdAt">
+        <rdfs:label xml:lang="en">createdAt</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The time at which the Renarration Transformation is created. There must be exactly one rn:createdAt property associated with a Renarration Transformation.
+		</rdfs:comment>
+        <rdfs:range rdf:resource="&xsd;dateTimeStamp"/>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+    </owl:DatatypeProperty>		
+	
+	<owl:DatatypeProperty rdf:about="&rn;prefix">
+        <rdfs:label xml:lang="en">prefix</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The snippet of text occurs before the targeted text in a resource.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;PrefixSuffixSelector"/>
+    </owl:DatatypeProperty>	
+
+	<owl:DatatypeProperty rdf:about="&rn;suffix">
+        <rdfs:label xml:lang="en">suffix</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The snippet of text occurs after the targeted text in a resource.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;PrefixSuffixSelector"/>
+    </owl:DatatypeProperty>	
+	
+	<owl:DatatypeProperty rdf:about="&rn;selectedText">
+        <rdfs:label xml:lang="en">selectedText</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The snippet of text which is selected.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;PrefixSuffixSelector"/>
+    </owl:DatatypeProperty>		
+	
+	<owl:DatatypeProperty rdf:about="&rn;offset">
+        <rdfs:label xml:lang="en">offset</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The starting position of the content to be selected.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;PrefixSuffixSelector"/>
+		<rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>		
+	
+	<owl:DatatypeProperty rdf:about="&rn;byteNumber">
+        <rdfs:label xml:lang="en">byteNumber</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The number of bytes should be selected after the value of rn:offset
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;PrefixSuffixSelector"/>
+		<rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>		
+	
+	<!-- Data Properties -->
+	
+	<!-- Object Properties -->
+	
+    <owl:ObjectProperty rdf:about="&rn;renarratedBy">
+        <rdfs:label xml:lang="en">renarratedBy</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration and a Renarrator. There must be at least one rn:renarratedBy relationship associated with a Renarration. 
+			The object of the relationship must be an instance of rn:Renarrator class, which is the person who is responsible for the creation of the Renarration.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;Renarration"/>
+		<rdfs:range rdf:resource="&rn;Renarrator"/>
+    </owl:ObjectProperty>	
+	
+    <owl:ObjectProperty rdf:about="&rn;onSourceDocument">
+        <rdfs:label xml:lang="en">onSourceDocument</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration and a source document. There must be at least one rn:onSourceDocument relationship associated with a Renarration. 
+			The object of the relationship must be a document for which the renarration is being done.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;Renarration"/>
+    </owl:ObjectProperty>	
+
+    <owl:ObjectProperty rdf:about="&rn;toTargetDocument">
+        <rdfs:label xml:lang="en">toTargetDocument</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration and a source document. There must be at least one rn:onSourceDocument relationship associated with a Renarration. 
+			The object of the relationship must be a document for which the renarration is being done.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;Renarration"/>
+    </owl:ObjectProperty>			
+	
+    <owl:ObjectProperty rdf:about="&rn;hasRenarrationTransformation">
+        <rdfs:label xml:lang="en">hasRenarrationTransformation</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration and a target document (renarrated document). 
+			There must be at least one rn:toTargetDocument relationship associated with a Renarration. 
+			The object of the relationship must be an instance of one or a list of renarration transform.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;Renarration"/>
+    </owl:ObjectProperty>	
+
+    <owl:ObjectProperty rdf:about="&rn;hasNarration">
+        <rdfs:label xml:lang="en">hasNarration</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration Transformation and a narration defining content being created(as a renarration) for source content.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+        <rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+    </owl:ObjectProperty>		
+	
+    <owl:ObjectProperty rdf:about="&rn;accessedFrom">
+        <rdfs:label xml:lang="en">accessedFrom</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relation between a narration and external resource from which the content may be referenced.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:ObjectProperty>	
+
+    <owl:ObjectProperty rdf:about="&rn;sourceDocumentSelection">
+        <rdfs:label xml:lang="en">sourceDocumentSelection</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration Transformation and fragment of a source document. The object of the relationship must be an instance of a selector class.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+    </owl:ObjectProperty>		
+
+    <owl:ObjectProperty rdf:about="&rn;targetDocumentSelection">
+        <rdfs:label xml:lang="en">targetDocumentSelection</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a Renarration Transformation and part of the renarrated document. The object of the relationship must be an instance of a selector class.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="&rn;actionOnDocument">
+        <rdfs:label xml:lang="en">actionOnDocument</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between rn:RenarrationTransformation and rn:Action for defining type of action on targeted source element.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+		<rdfs:range rdf:resource="&rn;Action"/>
+    </owl:ObjectProperty>	
+	
+    <owl:ObjectProperty rdf:about="&rn;sourceSelection">
+        <rdfs:label xml:lang="en">sourceSelection</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between renarration transform and an instance of document selector for selecting part of a source document associated with the renarration.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+		<rdfs:range rdf:resource="&rn;DocumentSelector"/>
+    </owl:ObjectProperty>	
+	
+    <owl:ObjectProperty rdf:about="&rn;targetSelection">
+        <rdfs:label xml:lang="en">targetSelection</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between renarration transform and an instance of document selector for linking the selected part in renarrated document with source document.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;RenarrationTransformation"/>
+		<rdfs:range rdf:resource="&rn;DocumentSelector"/>
+    </owl:ObjectProperty>			
+
+    <owl:ObjectProperty rdf:about="&rn;isBetween">
+        <rdfs:label xml:lang="en">isBetween</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relation between a rn:BetweenSelector and rn:List. The object of the relationship must be an instance of rn:List class.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;BetweenSelector"/>
+		<rdfs:range rdf:resource="&rn;List"/>
+    </owl:ObjectProperty>	
+
+    <owl:ObjectProperty rdf:about="&rn;hasMotivation">
+        <rdfs:label xml:lang="en">hasMotivation</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a renarration and motivation.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;Renarration"/>
+		<rdfs:range rdf:resource="&rn;Motivation"/>
+    </owl:ObjectProperty>	
+	
+    <owl:ObjectProperty rdf:about="&rn;hasTargetAudience">
+        <rdfs:label xml:lang="en">hasTargetAudience</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a renarration and a group of people renarration is aimed for.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;Renarration"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="&rn;nodes">
+        <rdfs:label xml:lang="en">nodes</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The relationship between a resource and an instance of rdf:List class. When the relationship is rn:RenarrationTransformation 
+			rn:nodes is used to define a list of Renarration Transformation. When the relationship is rn:hasNarration, it is used to define 
+			a list of narrations(rn:hasNarration). Lastly, when the relationship is rn:onSourceDocument, it is used to define nested selections of source documents.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:domain rdf:resource="&rn;List"/>
+		<rdfs:subPropertyOf rdf:resource="&rdfs;member"/>
+    </owl:ObjectProperty>	
+	
+	<!-- Object Properties -->
+	
+	<!-- Classes -->
+	
+    <owl:Class rdf:about="&rn;Renarration">
+        <rdfs:label xml:lang="en">Renarration</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The class for Renarrations. The rn:Renarration class must be associated with a renarrator(rn:Renarrator) and a timestamp for defining time at renarration is created.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;Renarrator">
+        <rdfs:label xml:lang="en">Renarrator</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The class for Renarrators. Each renarrator must be equivalent with foaf:Person.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:Class>	
+
+    <owl:Class rdf:about="&rn;Document">
+        <rdfs:label xml:lang="en">Document</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			Any type of resource on the Web. If a more specific type is known, than it should be associated with source or renarrated documents.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;RenarrationTransformation">
+        <rdfs:label xml:lang="en">RenarrationTransformation</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The class for Renarration Transformations defining specific actions on parts of source documents. 
+			The rn:RenarrationTransformation class must be associated with a Renarration, 
+			a source document and a narration created for the selected part of the source document.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;Action">
+        <rdfs:label xml:lang="en">Action</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The rn:Action class must be associated with a Renarration Transformation. Defines type of action on targeted source element.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="&rn;DocumentSelector">
+        <rdfs:label xml:lang="en">DocumentSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The superclass for all selectors.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;TextSelector">
+        <rdfs:label xml:lang="en">TextSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:DocumentSelector and superclass of rn:PrefixSuffixSelector and rn:ByteSelector. The class describes a range of text either by the use of start and end positions or by using prefix and suffixes.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;DocumentSelector"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="&rn;PrefixSuffixSelector">
+        <rdfs:label xml:lang="en">PrefixSuffixSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:TextSelector. The class describes a range of text by the use of prefix and suffix.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;TextSelector"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;ByteSelector">
+        <rdfs:label xml:lang="en">ByteSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:TextSelector. The class describes a range of text by the use of start and end bytes.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;TextSelector"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;BetweenSelector">
+        <rdfs:label xml:lang="en">BetweenSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:DocumentSelector. The class describes a selection between selection of two selectors.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;DocumentSelector"/>
+    </owl:Class>	
+
+    <owl:Class rdf:about="&rn;XPathSelector">
+        <rdfs:label xml:lang="en">XPathSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:DocumentSelector. The class describes a targeted segment by using a fragment identifier using xpath.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;DocumentSelector"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;MediaSelector">
+        <rdfs:label xml:lang="en">MediaSelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:DocumentSelector. The class describes a targeted segment of any media on the Web by use of a fragment identifier.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;DocumentSelector"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;EmptySelector">
+        <rdfs:label xml:lang="en">EmptySelector</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rn:DocumentSelector. The class describes no selection. Special class designed to be used with rn:BetweenSelector.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rn;DocumentSelector"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;Motivation">
+        <rdfs:label xml:lang="en">Motivation</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of skos:Concept. The reason behind the creation of a renarration or a renarration transformation. Motivations can be things like translation, simplification, correction, or alternative.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&skos;Concept"/>
+    </owl:Class>	
+	
+    <owl:Class rdf:about="&rn;List">
+        <rdfs:label xml:lang="en">List</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			subClass of rdf:Bag. Defines a list of narrations, which should be interpreted in defined order, for a source document or part of a source document.
+		</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="https://github.com/EmrahGuder/Renarration/#"/>
+		<rdfs:subClassOf rdf:resource="&rdf;Bag"/>
+    </owl:Class>	
+	
+	<!-- Classes -->
+	
+	<!-- Named Individuals -->
+	
+    <owl:NamedIndividual rdf:about="&rn;actionScheme">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:label xml:lang="en">actionScheme</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			Instance of skos:ConceptScheme. The concept scheme for defining a set of instances of rn:Action.
+		</rdfs:comment>
+    </owl:NamedIndividual>
+	
+    <owl:NamedIndividual rdf:about="&rn;replace">
+        <rdf:type rdf:resource="&rn;Action"/>
+        <rdfs:comment xml:lang="en">
+			Instance of rn:Action. The action that represents replacing content in a source document with new content which will reside in a target document.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">replace</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;actionScheme"/>
+    </owl:NamedIndividual>	
+	
+    <owl:NamedIndividual rdf:about="&rn;remove">
+        <rdf:type rdf:resource="&rn;Action"/>
+        <rdfs:comment xml:lang="en">
+			Instance of rn:Action. The action that represents replacing content in a source document with nothing in a target document.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">remove</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;actionScheme"/>
+    </owl:NamedIndividual>	
+
+	<owl:NamedIndividual rdf:about="&rn;insert">
+        <rdf:type rdf:resource="&rn;Action"/>
+        <rdfs:comment xml:lang="en">
+			Instance of rn:Action. The action that represents insertion of content to a specified position in target document.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">insert</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;actionScheme"/>
+    </owl:NamedIndividual>	
+	
+    <owl:NamedIndividual rdf:about="&rn;motivationScheme">
+        <rdf:type rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:label xml:lang="en">motivationScheme</rdfs:label>
+        <rdfs:comment xml:lang="en">
+			The concept scheme for motivations.
+		</rdfs:comment>
+    </owl:NamedIndividual>	
+	
+	<owl:NamedIndividual rdf:about="&rn;translation">
+        <rdf:type rdf:resource="&rn;Motivation"/>
+        <rdfs:comment xml:lang="en">
+			The motivation that represents interpretation of source content in another language.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">translation</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;motivationScheme"/>
+    </owl:NamedIndividual>	
+
+	<owl:NamedIndividual rdf:about="&rn;simplification">
+        <rdf:type rdf:resource="&rn;Motivation"/>
+        <rdfs:comment xml:lang="en">
+			The motivation that represents simplifying content in a source document so that it will be easier to consume.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">simplification</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;motivationScheme"/>
+    </owl:NamedIndividual>	
+
+	<owl:NamedIndividual rdf:about="&rn;correction">
+        <rdf:type rdf:resource="&rn;Motivation"/>
+        <rdfs:comment xml:lang="en">
+			The motivation that represents updating content either for verification or adjustment.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">correction</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;motivationScheme"/>
+    </owl:NamedIndividual>	
+	
+	<owl:NamedIndividual rdf:about="&rn;alternative">
+        <rdf:type rdf:resource="&rn;Motivation"/>
+        <rdfs:comment xml:lang="en">
+			The motivation that represents providing a new content which alternates content in a source document.
+		</rdfs:comment>
+        <skos:prefLabel xml:lang="en">alternative</skos:prefLabel>
+        <skos:inScheme rdf:resource="&rn;motivationScheme"/>
+    </owl:NamedIndividual>	
+	
+	<!-- Named Individuals -->
+	
+	
+</rdf:RDF>

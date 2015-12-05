@@ -1,6 +1,6 @@
 {
  "@context": {
-  "rn": "https://github.com/EmrahGuder/Renarration/rn#",
+  "rn": "https://github.com/EmrahGuder/Renarration/#",
   "oa": "http://www.w3.org/ns/oa#",
   "foaf": "http://xmlns.com/foaf/0.1/",
   "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -13,9 +13,11 @@
   "xsd": "http://www.w3.org/2001/XMLSchema#",
 	
   "sourceSelection" : {"@type":"@id", "@id" : "rn:sourceSelection"},
+  "targetSelection" : {"@type":"@id", "@id" : "rn:targetSelection"},
   "audience"	: {"@type":"@id", "@id" : "rn:hasTargetAudience"},
   "source" : {"@type":"@id", "@id" : "rn:onSourceDocument"},
   "target" : {"@type":"@id", "@id" : "rn:onTargetDocument"}, 
+  "transformList" : {"@type":"@id", "@id" : "rn:hasRenarrationTransformation","@container" : "@list"},
   "transform" : {"@type":"@id", "@id" : "rn:hasRenarrationTransformation"},
   "nodes" : {"@type":"@id", "@id" : "rn:nodes", "@container" : "@list"},
   "action" : {"@type":"@id", "@id" : "rn:actionOnDocument"},
@@ -28,7 +30,15 @@
   "content" : "cnt:content",
   "renarratedAt" : "rn:renarratedAt",
   "value" : "rdf:value",
-  "createdAt" : "rn:createdAt"
+  "createdAt" : "rn:createdAt",
+  "prefix": "rn:prefix",
+  "language" : "dc:language",
+  "suffix": "rn:suffix",
+  "text": "rn:selectedText",
+  "name": "foaf:name",
+  "mbox" : "foaf:mbox",
+  "offset": { "@type": "xsd:nonNegativeInteger", "@id": "rn:offset" }, 
+  "byteNumber": { "@type": "xsd:nonNegativeInteger", "@id": "rn:byteNumber" }
 
  },
  "@graph": [ 
@@ -157,22 +167,7 @@
    "rdfs:range": {
     "@id": "xsd:dateTimeStamp"
    }
-  },
-  {
-   "@id": "rn:Transformation",
-   "@type": "owl:Class",
-   "rdfs:comment": {
-    "@language": "en",
-    "@value": "Superclass for rn:RenarrationTransformation and rn:List."
-   },
-   "rdfs:isDefinedBy": {
-    "@id": "rn:"
-   },
-   "rdfs:label": {
-    "@language": "en",
-    "@value": "Transformation"
-   }
-  },   
+  }, 
   {
    "@id": "rn:RenarrationTransformation",
    "@type": "owl:Class",
@@ -186,9 +181,6 @@
    "rdfs:label": {
     "@language": "en",
     "@value": "RenarrationTransformation"
-   },
-   "rdfs:subClassOf": {
-    "@id": "rn:Transformation"
    }
   },  
   {
@@ -196,7 +188,7 @@
    "@type": "owl:ObjectProperty",
    "rdfs:comment": {
     "@language": "en",
-    "@value": " The relationship between a Renarration and a target document (renarrated document). There must be at least one rn:toTargetDocument relationship associated with a Renarration. The object of the relationship must be an instance of rn:Document class."
+    "@value": "The relationship between a Renarration and a target document (renarrated document). There must be at least one rn:toTargetDocument relationship associated with a Renarration. The object of the relationship must be an instance of one or a list of renarration transform."
    },
    "rdfs:domain": {
     "@id": "rn:Renarration"
@@ -207,9 +199,6 @@
    "rdfs:label": {
     "@language": "en",
     "@value": "hasRenarrationTransformation"
-   },
-   "rdfs:range": {
-	"@id": "rn:Transformation"
    }
   },  
   {
@@ -517,7 +506,7 @@
    "@type": "owl:Class",
    "rdfs:comment": {
     "@language": "en",
-    "@value": "subClass of rn:DocumentSelector. The class describes a selection between two selectors."
+    "@value": "subClass of rn:DocumentSelector. The class describes a selection between selection of two selectors."
    },
    "rdfs:isDefinedBy": {
     "@id": "rn:"
@@ -647,7 +636,7 @@
    "@type": "owl:DatatypeProperty",
    "rdfs:comment": {
     "@language": "en",
-    "@value": "The snippet of text which is targeted."
+    "@value": "The snippet of text which is selected."
    },
    "rdfs:domain": {
     "@id": "rn:PrefixSuffixSelector"
@@ -843,8 +832,8 @@
     "@value": "List"
    },
    "rdfs:subClassOf": {
-    "@id": "rdf:Bag"
-   } 
+     "@id": "rdf:Bag"
+    }	
   },  
   {
    "@id": "rn:nodes",
@@ -863,8 +852,8 @@
     "@language": "en",
     "@value": "nodes"
    },
-   "rdfs:range": {
-    "@id": "rdf:List"
+   "rdfs:subPropertyOf": {
+    "@id": "rdfs:member"
    }   
   }   
  ]  
