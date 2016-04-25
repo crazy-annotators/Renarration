@@ -1,0 +1,80 @@
+/* Content Boxes */
+
+.ReNarrationDiv{
+	width:80%;
+	height:600px; 
+	border: solid 1px #E8E8E8;
+	background-color: #F8F8F8; 
+	position: absolute; 
+	left: 150px; 
+	top: 100px;	
+	font-family:calibri;
+    font-size:12px;
+    overflow: auto;
+}
+
+.annotationInfo{
+	width:600px;
+	height:300px;
+	border: solid 1px #E8E8E8;
+	background-color: #E4CF62;
+	font-family:calibri;
+    font-size:12px;
+    overflow: auto;
+}
+
+.text, .text td, .text tr{
+	font-family:calibri;
+    font-size:12px;
+}
+
+.textHeading, .textHeading td, .textHeading tr{
+	font-family:calibri;
+    font-size:14px;
+}
+
+.ReNarrationHeadingDiv{
+	width:100%; 
+	border: solid 1px #D8D8D8;
+	background-color: #E0E0E0;  
+	font-family:calibri;
+    font-size:14px;
+}
+
+#renarration_Tab{
+    cursor:pointer;
+    background-color:rgb(200,200,200);
+    padding-left:13px;
+    padding-right:13px;
+}
+
+#annotation_Tab{
+    cursor:pointer;
+    background-color:rgb(200,200,200);
+    padding-left:13px;
+    padding-right:13px;
+}
+
+#RenarrationTab{
+    display:block;
+    position:relative;
+}
+
+#AnnotationTab{
+    display:none;
+    position:relative;
+}
+
+#popup {
+	width: 600px;
+	height: 400px;
+	position: absolute;
+	color: #000000;
+	background-color: #F8F8F8;
+	border: solid 2px #E8E8E8;
+	/* To align popup window at the center of screen*/
+	left: 500px; 
+	top: 100px;
+	font-family:calibri;
+    font-size:14px;
+}
